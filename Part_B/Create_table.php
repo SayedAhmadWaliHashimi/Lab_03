@@ -10,9 +10,11 @@
 <div class="container mt-5">
     <h2>Create Students Table</h2>
     <?php
-// Sayed Ahmad Wali son of Sayed Gharib
-// Connect to the database you created in Part A
-    $conn = new mysqli("localhost", "root", "", "wis_lab");
+    // SayedAhmadWali
+    $dbname = "wis_lab";
+    
+    // Connect to your database 
+    $conn = new mysqli("localhost", "root", "", $dbname, 3307);
 
     if ($conn->connect_error) {
         die('<div class="alert alert-danger">Connection failed: ' . $conn->connect_error . '</div>');
