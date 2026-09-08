@@ -22,16 +22,18 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $databaseName = trim($_POST["database_name"]);
 
-        // 1. Connect to MySQL (without selecting a database)
-        $conn = new mysqli("localhost", "root", "");
+        // SayedAhmadWali son of SayedGharib
+        // Connect to MySQL 
+        $conn = new mysqli("localhost", "root", "", null, 3307);
+        
         if ($conn->connect_error) {
             echo '<div class="alert alert-danger mt-3">Connection failed: ' . $conn->connect_error . '</div>';
         } else {
-            // 2. Validate database name: only letters, numbers, underscores
+            // Validate database name: only letters, numbers, underscores
             if (!preg_match('/^[A-Za-z0-9_]+$/', $databaseName)) {
                 echo '<div class="alert alert-danger mt-3">Invalid database name. Use only letters, numbers, and underscores.</div>';
             } else {
-                // 3. Build and execute CREATE DATABASE query
+                // Build and execute CREATE DATABASE query
                 $sql = "CREATE DATABASE `$databaseName`";
                 if ($conn->query($sql) === TRUE) {
                     echo '<div class="alert alert-success mt-3">Database "' . $databaseName . '" created successfully!</div>';
@@ -39,7 +41,6 @@
                     echo '<div class="alert alert-danger mt-3">Error: ' . $conn->error . '</div>';
                 }
             }
-            // 4. Close connection
             $conn->close();
         }
     }
